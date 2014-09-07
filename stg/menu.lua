@@ -23,12 +23,41 @@ function MenuState:enable()
 	list:SetPadding(5)
 	list:SetSpacing(5)
 	list:Clear()
+	
 	local button = loveframes.Create("button")
 	button:SetText("play")
 	button.OnClick = function(object, x, y)
 		frame:Remove()
 		enableState("game")
 		disableState("menu")
+	end
+	list:AddItem(button)
+	
+	local button = loveframes.Create("button")
+	button:SetText("leaderboards")
+	button.OnClick = function(object, x, y)
+		--le.push("quit")
+	end
+	list:AddItem(button)
+	
+	local button = loveframes.Create("button")
+	button:SetText("settings")
+	button.OnClick = function(object, x, y)
+		--le.push("quit")
+	end
+	list:AddItem(button)
+	
+	local button = loveframes.Create("button")
+	button:SetText("about")
+	button.OnClick = function(object, x, y)
+		--le.push("quit")
+	end
+	list:AddItem(button)
+	
+	local button = loveframes.Create("button")
+	button:SetText("exit")
+	button.OnClick = function(object, x, y)
+		le.push("quit")
 	end
 	list:AddItem(button)
 end
