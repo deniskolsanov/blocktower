@@ -12,6 +12,7 @@ require("lib/stateManager")
 require("lib/lovelyMoon")
 require("stg/game")
 require("stg/menu")
+require("stg/pause")
 cube = love.graphics.newImage('cube.png')
 
 function love.load()
@@ -19,6 +20,7 @@ function love.load()
 	love.graphics.setBackgroundColor(104, 136, 248)
 	addState(GameState, "game")
 	addState(MenuState, "menu")
+	addState(PauseState, "pause")
 	
 	enableState("menu")
 end

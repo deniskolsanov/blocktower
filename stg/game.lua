@@ -8,15 +8,7 @@ function GameState:new()
 end
 
 function GameState:load()
-end
-
-function GameState:close()
-	world:destroy()
-	Game, Game2, time = nil, nil, nil
-end
-
-function GameState:enable()
-  love.physics.setMeter(50)
+	love.physics.setMeter(50)
   world = love.physics.newWorld(0, 9.81*50, true)
 	world:setSleepingAllowed( false )
 	px, py = 0, 0
@@ -43,10 +35,30 @@ function GameState:enable()
 	for i = 1, #Game do
 		Game[i]()
 	end
-	time = love.timer.getTime()
 end
+
+function GameState:close()
+	world:destroy()
+	Game, Game2, time = nil, nil, nil
+	loveframes.util.RemoveAll()
+end
+
+function GameState:enable()
+	time = love.timer.getTime()
+	
+	local button = loveframes.Create("button", base)
+	button:SetWidth(80)
+	button:SetHeight(40)
+	button:SetX( xsize - 80 )
+	button:SetText("Pause")
+	button.OnClick = function(object, x, y)
+		disableState("game")
+		enableState("pause")
+	end
+end
+
 function GameState:disable()
-	GameState:close()
+	loveframes.util.RemoveAll()
 end
 
 function GameState:keypressed( key, isrepeat )

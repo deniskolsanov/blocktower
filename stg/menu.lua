@@ -9,27 +9,19 @@ function MenuState:close()
 end
 
 function MenuState:enable()
-	local frame = loveframes.Create("frame")
-	frame:SetWidth(xsize * 0.4)
-	frame:SetHeight(155)
-	frame:SetName("menu")
-	frame:ShowCloseButton(false)
-	frame:SetDraggable(false)
-	frame:CenterWithinArea(0, 0, xsize, ysize)
-	
 	local list = loveframes.Create("list", frame)
 	list:SetPos(0, 0)
 	list:SetSize(xsize * 0.4, 155)
 	list:SetPadding(5)
 	list:SetSpacing(5)
 	list:Clear()
+	list:CenterWithinArea(0, 0, xsize, ysize)
 	
 	local button = loveframes.Create("button")
 	button:SetText("play")
 	button.OnClick = function(object, x, y)
-		frame:Remove()
-		enableState("game")
 		disableState("menu")
+		enableState("game")
 	end
 	list:AddItem(button)
 	
@@ -63,7 +55,7 @@ function MenuState:enable()
 end
 
 function MenuState:disable()
-	
+	loveframes.util.RemoveAll()
 end
 
 function MenuState:update(dt)
