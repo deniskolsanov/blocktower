@@ -28,14 +28,16 @@ function MenuState:enable()
 	local button = loveframes.Create("button")
 	button:SetText("leaderboards")
 	button.OnClick = function(object, x, y)
-		--le.push("quit")
+		disableState("menu")
+		enableState("leaderboard")
 	end
 	list:AddItem(button)
 	
 	local button = loveframes.Create("button")
 	button:SetText("settings")
 	button.OnClick = function(object, x, y)
-		--le.push("quit")
+		disableState("menu")
+		enableState("settings")
 	end
 	list:AddItem(button)
 	

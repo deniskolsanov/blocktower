@@ -13,6 +13,8 @@ require("lib/lovelyMoon")
 require("stg/game")
 require("stg/menu")
 require("stg/pause")
+require("stg/leaderboard")
+require("stg/settings")
 cube = love.graphics.newImage('cube.png')
 
 function love.load()
@@ -21,6 +23,8 @@ function love.load()
 	addState(GameState, "game")
 	addState(MenuState, "menu")
 	addState(PauseState, "pause")
+	addState(LeaderboardState, "leaderboard"  )
+	addState(SettingsState, "settings"  )
 	
 	enableState("menu")
 end
@@ -57,6 +61,6 @@ function love.update(dt)
 end
 
 function love.draw()
-	loveframes.draw()
 	lovelyMoon.draw()
+	loveframes.draw()
 end

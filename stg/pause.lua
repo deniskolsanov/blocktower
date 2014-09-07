@@ -18,6 +18,17 @@ function PauseState:enable()
 		disableState("pause")
 		enableState("game")
 	end
+	
+	local button = loveframes.Create("button", base)
+	button:SetWidth(80)
+	button:SetHeight(30)
+	button:SetX( xsize - 80 )
+	button:SetY( 50 )
+	button:SetText("Settings")
+	button.OnClick = function(object, x, y)
+		disableState("pause")
+		enableState("game")
+	end
 end
 
 function PauseState:disable()
@@ -29,6 +40,8 @@ end
 
 function PauseState:draw()
 	GameState:draw()
+	lg.setColor( 0, 0, 0, 100 )
+	lg.rectangle( "fill", 0, 0, xsize, ysize )
 end
 
 function PauseState:keypressed(key, unicode)
