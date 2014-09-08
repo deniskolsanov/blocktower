@@ -27,7 +27,18 @@ function PauseState:enable()
 	button:SetText("Settings")
 	button.OnClick = function(object, x, y)
 		disableState("pause")
-		enableState("game")
+		enableState("settings")
+	end
+	
+	local button = loveframes.Create("button", base)
+	button:SetWidth(80)
+	button:SetHeight(30)
+	button:SetX( xsize - 80 )
+	button:SetY( 80 )
+	button:SetText("Menu")
+	button.OnClick = function(object, x, y)
+		disableState("pause")
+		enableState("menu")
 	end
 end
 
